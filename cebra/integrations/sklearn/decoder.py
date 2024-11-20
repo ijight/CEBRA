@@ -132,7 +132,7 @@ class KNNDecoder(Decoder):
         # Use regression or classification, based on if the targets are continuous or discrete
         if cebra.helper._is_floating(y):
             self.knn = sklearn.neighbors.KNeighborsRegressor(
-                n_neighbors=self.n_neighbors, metric=self.metric)
+                n_neighbors=self.n_neighbors, metric=self.metric, algorithm='ball_tree')
         elif cebra.helper._is_integer(y):
             self.knn = sklearn.neighbors.KNeighborsClassifier(
                 n_neighbors=self.n_neighbors, metric=self.metric)
